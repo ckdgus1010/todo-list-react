@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
-import type { IToDoAtom } from "../atoms/atom-todo";
+import { toDoAtom, type IToDoAtom } from "../atoms/atom-todo";
+import { useAtom } from "jotai";
 
 const ToDoLi = styled.li`
     margin-bottom: 10px;
@@ -21,14 +22,49 @@ const ToDoButton = styled.button`
     color: #0d0d0d;
 `;
 
-function ToDo({ content, category }: IToDoAtom) {
+function ToDo({ id, content, category }: IToDoAtom) {
+    const [toDos, setToDos] = useAtom(toDoAtom);
+
+    const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        const {
+            currentTarget: { name },
+        } = event;
+
+        const targetIndex = toDos.findIndex((toDo) => toDo.id === id);
+        const newToDo = {
+            id: id,
+            content: content,
+            category: name as any,
+        };
+
+        setToDos((oldToDos) => {
+            return [
+                ...oldToDos.slice(0, targetIndex),
+                newToDo,
+                ...oldToDos.slice(targetIndex + 1),
+            ];
+        });
+    };
+
     return (
-        <ToDoLi>
+        <ToDoLi id={id.toString()}>
             <span>{content}</span>
             <ToDoButtons>
-                {category !== "TO_DO" && <ToDoButton>📝 To Do</ToDoButton>}
-                {category !== "DOING" && <ToDoButton>🔄 Doing</ToDoButton>}
-                {category !== "DONE" && <ToDoButton>✅ Done</ToDoButton>}
+                {category !== "TO_DO" && (
+                    <ToDoButton name="TO_DO" onClick={onClick}>
+                        📝 To Do
+                    </ToDoButton>
+                )}
+                {category !== "DOING" && (
+                    <ToDoButton name="DOING" onClick={onClick}>
+                        🔄 Doing
+                    </ToDoButton>
+                )}
+                {category !== "DONE" && (
+                    <ToDoButton name="DONE" onClick={onClick}>
+                        ✅ Done
+                    </ToDoButton>
+                )}
             </ToDoButtons>
         </ToDoLi>
     );
