@@ -9,7 +9,6 @@ const Form = styled.form`
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
-    background-color: #f8f9fa;
     input {
         width: 65%;
     }

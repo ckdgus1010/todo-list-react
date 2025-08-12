@@ -17,6 +17,8 @@ const ToDoListBox = styled.div`
     height: 600px;
     border-radius: 10px;
     background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
 `;
 
 const Title = styled.div`
@@ -28,7 +30,6 @@ const Title = styled.div`
     font-size: 2rem;
     font-weight: 400;
     border-radius: 10px;
-    background-color: #f8f9fa;
 `;
 
 const Hr = styled.hr`
@@ -37,8 +38,11 @@ const Hr = styled.hr`
 `;
 
 const List = styled.ul`
-    margin: 20px;
+    margin: 20px 20px 40px;
     padding: 10px 20px;
+    flex: 1;
+    overflow: hidden;
+    overflow-y: auto;
 `;
 
 function ToDoList() {

@@ -13,7 +13,7 @@ const ToDoLi = styled.li`
 
 const ToDoButtons = styled.div`
     display: flex;
-    gap: 0.4rem;
+    gap: 0.8rem;
 `;
 
 const ToDoButton = styled.button`
