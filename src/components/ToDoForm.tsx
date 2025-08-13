@@ -1,8 +1,9 @@
 import { styled } from "styled-components";
 import { useForm } from "react-hook-form";
-import { useAtom, useSetAtom } from "jotai";
+import { useAtom } from "jotai";
 import { toDoAtom, type IToDoAtom } from "../atoms/atom-todo";
 import { categoryAtom } from "../atoms/atom-category";
+import { useEffect } from "react";
 
 const Form = styled.form`
     margin: 20px;
@@ -20,8 +21,12 @@ interface IFormData {
 }
 
 function ToDoForm() {
-    const setToDos = useSetAtom(toDoAtom);
+    const [toDos, setToDos] = useAtom(toDoAtom);
     const [category, setCategory] = useAtom(categoryAtom);
+
+    useEffect(() => {
+        localStorage.setItem("toDos", JSON.stringify(toDos));
+    }, [toDos]);
 
     const onChange = (event: React.FormEvent<HTMLSelectElement>) => {
         const {
@@ -32,16 +37,17 @@ function ToDoForm() {
     };
 
     const { register, handleSubmit, setValue } = useForm<IFormData>();
+
     const onValid = (data: IFormData) => {
         setValue("toDo_content", "");
 
         setToDos((prev) => [
-            ...prev,
             {
                 id: Date.now(),
                 content: data.toDo_content,
                 category: data.toDo_category,
             },
+            ...prev,
         ]);
     };
 

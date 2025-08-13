@@ -15,7 +15,7 @@ const Container = styled.div`
 const ToDoListBox = styled.div`
     width: 480px;
     height: 600px;
-    border-radius: 10px;
+    border-radius: 20px;
     background-color: #f8f9fa;
     display: flex;
     flex-direction: column;
@@ -56,7 +56,7 @@ function ToDoList() {
                 <ToDoForm />
                 <List>
                     {toDos?.map((toDo) => (
-                        <ToDo  key={toDo.id} {...toDo} />
+                        <ToDo key={toDo.id} {...toDo} />
                     ))}
                 </List>
             </ToDoListBox>

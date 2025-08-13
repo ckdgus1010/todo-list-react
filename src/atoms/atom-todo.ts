@@ -7,11 +7,16 @@ export interface IToDoAtom {
     category: "TO_DO" | "DOING" | "DONE";
 }
 
-export const toDoAtom = atom<IToDoAtom[]>([]);
+export const initialToDos: IToDoAtom[] = (() => {
+    const rawData = localStorage.getItem("toDos");
+    return rawData ? (JSON.parse(rawData) as IToDoAtom[]) : [];
+})();
+
+export const toDoAtom = atom<IToDoAtom[]>(initialToDos);
 
 export const toDoSelector = atom((get) => {
     const category = get(categoryAtom);
     const toDos = get(toDoAtom);
 
     return toDos.filter((toDo) => toDo.category === category);
-})
+});
