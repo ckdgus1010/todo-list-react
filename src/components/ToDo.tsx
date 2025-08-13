@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import { toDoAtom, type IToDoAtom } from "../atoms/atom-todo";
 import { useAtom } from "jotai";
+import { ToDoCategories } from "../atoms/atom-category";
 
 const ToDoLi = styled.li`
     margin-bottom: 10px;
@@ -50,21 +51,15 @@ function ToDo({ id, content, category }: IToDoAtom) {
         <ToDoLi id={id.toString()}>
             <span>{content}</span>
             <ToDoButtons>
-                {category !== "TO_DO" && (
-                    <ToDoButton name="TO_DO" onClick={onClick}>
-                        📝 To Do
-                    </ToDoButton>
-                )}
-                {category !== "DOING" && (
-                    <ToDoButton name="DOING" onClick={onClick}>
-                        🔄 Doing
-                    </ToDoButton>
-                )}
-                {category !== "DONE" && (
-                    <ToDoButton name="DONE" onClick={onClick}>
-                        ✅ Done
-                    </ToDoButton>
-                )}
+                {Object.values(ToDoCategories).map((cat) => {
+                    return (
+                        category !== cat && (
+                            <ToDoButton name={cat} onClick={onClick}>
+                                {cat}
+                            </ToDoButton>
+                        )
+                    );
+                })}
             </ToDoButtons>
         </ToDoLi>
     );

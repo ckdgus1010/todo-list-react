@@ -1,13 +1,5 @@
 import { atom } from "jotai";
-import { categoryAtom } from "./atom-category";
-
-export const ToDoCategories = {
-    TO_DO: "TO_DO",
-    DOING: "DOING",
-    DONE: "DONE",
-}
-
-export type ToDoCategories = typeof ToDoCategories[keyof typeof ToDoCategories];
+import { categoryAtom, ToDoCategories } from "./atom-category";
 
 export interface IToDoAtom {
     id: number;

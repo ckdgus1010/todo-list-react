@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
 import { useForm } from "react-hook-form";
 import { useAtom } from "jotai";
-import { toDoAtom, ToDoCategories } from "../atoms/atom-todo";
-import { categoryAtom } from "../atoms/atom-category";
+import { toDoAtom } from "../atoms/atom-todo";
+import { categoryAtom, ToDoCategories } from "../atoms/atom-category";
 import { useEffect } from "react";
 
 const Form = styled.form`
@@ -59,9 +59,9 @@ function ToDoForm() {
                     onChange: onChange,
                 })}
             >
-                <option value={ToDoCategories.TO_DO}>📝 To Do</option>
-                <option value={ToDoCategories.DOING}>🔄 Doing</option>
-                <option value={ToDoCategories.DONE}>✅ Done</option>
+                <option value={ToDoCategories.TO_DO}>{ToDoCategories.TO_DO}</option>
+                <option value={ToDoCategories.DOING}>{ToDoCategories.DOING}</option>
+                <option value={ToDoCategories.DONE}>{ToDoCategories.DONE}</option>
             </select>
             <input
                 type="text"
