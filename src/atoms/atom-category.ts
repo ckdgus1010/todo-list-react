@@ -1,4 +1,4 @@
 import { atom } from "jotai";
-import type { IToDoAtom } from "./atom-todo";
+import type { ToDoCategories } from "./atom-todo";
 
-export const categoryAtom = atom<IToDoAtom["category"]>("TO_DO");
+export const categoryAtom = atom<ToDoCategories>("TO_DO");

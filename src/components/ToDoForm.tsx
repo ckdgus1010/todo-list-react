@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import { useForm } from "react-hook-form";
 import { useAtom } from "jotai";
-import { toDoAtom, type IToDoAtom } from "../atoms/atom-todo";
+import { toDoAtom, ToDoCategories } from "../atoms/atom-todo";
 import { categoryAtom } from "../atoms/atom-category";
 import { useEffect } from "react";
 
@@ -17,7 +17,7 @@ const Form = styled.form`
 
 interface IFormData {
     toDo_content: string;
-    toDo_category: IToDoAtom["category"];
+    toDo_category: ToDoCategories;
 }
 
 function ToDoForm() {
@@ -33,7 +33,7 @@ function ToDoForm() {
             currentTarget: { value },
         } = event;
 
-        setCategory(value as IToDoAtom["category"]);
+        setCategory(value as ToDoCategories);
     };
 
     const { register, handleSubmit, setValue } = useForm<IFormData>();
@@ -59,9 +59,9 @@ function ToDoForm() {
                     onChange: onChange,
                 })}
             >
-                <option value="TO_DO">📝 To Do</option>
-                <option value="DOING">🔄 Doing</option>
-                <option value="DONE">✅ Done</option>
+                <option value={ToDoCategories.TO_DO}>📝 To Do</option>
+                <option value={ToDoCategories.DOING}>🔄 Doing</option>
+                <option value={ToDoCategories.DONE}>✅ Done</option>
             </select>
             <input
                 type="text"
