@@ -4,6 +4,7 @@ import { toDoSelector } from "../atoms/atom-todo";
 import ToDoForm from "./ToDoForm";
 import ToDo from "./ToDo";
 import CustomCategoryForm from "./CustomCategoryForm";
+import Title from "./Title";
 
 const Container = styled.div`
     margin: auto 10px;
@@ -16,27 +17,11 @@ const Container = styled.div`
 
 const ToDoListBox = styled.div`
     width: 480px;
-    height: 600px;
+    max-height: 600px;
     border-radius: 20px;
     background-color: #f8f9fa;
     display: flex;
     flex-direction: column;
-`;
-
-const Title = styled.div`
-    margin: 40px 20px 10px;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    font-weight: 400;
-    border-radius: 10px;
-`;
-
-const Hr = styled.hr`
-    width: 150px;
-    margin-bottom: 30px;
 `;
 
 const List = styled.ul`
@@ -53,8 +38,7 @@ function ToDoList() {
     return (
         <Container>
             <ToDoListBox>
-                <Title>To Do List</Title>
-                <Hr />
+                <Title title={"To Do List"} />
                 <ToDoForm />
                 <List>
                     {toDos?.map((toDo) => (
