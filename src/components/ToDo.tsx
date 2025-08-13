@@ -54,7 +54,7 @@ function ToDo({ id, content, category }: IToDoAtom) {
                 {Object.values(ToDoCategories).map((cat) => {
                     return (
                         category !== cat && (
-                            <ToDoButton name={cat} onClick={onClick}>
+                            <ToDoButton key={cat} name={cat} onClick={onClick}>
                                 {cat}
                             </ToDoButton>
                         )
