@@ -55,7 +55,7 @@ Error generating stack: `+l.message+`
     input {
         width: 65%;
     }
-`;function Wm(){const[n,c]=nc(hs),[f,r]=nc(x0),d=yc(N0);console.log(d),Je.useEffect(()=>{localStorage.setItem("toDos",JSON.stringify(n))},[n]);const y=z=>{const{currentTarget:{value:V}}=z;r(V)},{register:b,handleSubmit:O,setValue:M}=G0(),S=z=>{M("toDo_content",""),c(V=>[{id:Date.now(),content:z.toDo_content,category:z.toDo_category},...V])};return Nt.jsxs(Fm,{onSubmit:O(S),children:[Nt.jsx("select",{...b("toDo_category",{value:f,onChange:y}),children:Object.values(d).map(z=>Nt.jsx("option",{value:z,children:z},z))}),Nt.jsx("input",{type:"text",placeholder:"Write a to do",...b("toDo_content",{required:"Please write a To Do."})}),Nt.jsx("button",{type:"submit",children:"Add"})]})}const Im=$e.li`
+`;function Wm(){const[n,c]=nc(hs),[f,r]=nc(x0),d=yc(N0);Je.useEffect(()=>{localStorage.setItem("toDos",JSON.stringify(n))},[n]);const y=z=>{const{currentTarget:{value:V}}=z;r(V)},{register:b,handleSubmit:O,setValue:M}=G0(),S=z=>{M("toDo_content",""),c(V=>[{id:Date.now(),content:z.toDo_content,category:z.toDo_category},...V])};return Nt.jsxs(Fm,{onSubmit:O(S),children:[Nt.jsx("select",{...b("toDo_category",{value:f,onChange:y}),children:Object.values(d).map(z=>Nt.jsx("option",{value:z,children:z},z))}),Nt.jsx("input",{type:"text",placeholder:"Write a to do",...b("toDo_content",{required:"Please write a To Do."})}),Nt.jsx("button",{type:"submit",children:"Add"})]})}const Im=$e.li`
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
