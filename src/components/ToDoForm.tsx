@@ -24,7 +24,6 @@ function ToDoForm() {
     const [toDos, setToDos] = useAtom(toDoAtom);
     const [category, setCategory] = useAtom(categoryAtom);
     const allCategories = useAtomValue(allCategoriesAtom);
-    console.log(allCategories);
 
     // TODO: 카테고리 불러오기
 
