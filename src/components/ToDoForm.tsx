@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
 import { useForm } from "react-hook-form";
-import { useAtom } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 import { toDoAtom } from "../atoms/atom-todo";
-import { categoryAtom, ToDoCategories } from "../atoms/atom-category";
+import { allCategoriesAtom, categoryAtom, ToDoCategories } from "../atoms/atom-category";
 import { useEffect } from "react";
 
 const Form = styled.form`
@@ -23,6 +23,10 @@ interface IFormData {
 function ToDoForm() {
     const [toDos, setToDos] = useAtom(toDoAtom);
     const [category, setCategory] = useAtom(categoryAtom);
+    const allCategories = useAtomValue(allCategoriesAtom);
+    console.log(allCategories);
+
+    // TODO: 카테고리 불러오기
 
     useEffect(() => {
         localStorage.setItem("toDos", JSON.stringify(toDos));
@@ -59,9 +63,14 @@ function ToDoForm() {
                     onChange: onChange,
                 })}
             >
-                <option value={ToDoCategories.TO_DO}>{ToDoCategories.TO_DO}</option>
+                {Object.values(allCategories).map(cat => {
+                    return (
+                        <option key={cat} value={cat}>{cat}</option>
+                    )
+                })}
+                {/* <option value={ToDoCategories.TO_DO}>{ToDoCategories.TO_DO}</option>
                 <option value={ToDoCategories.DOING}>{ToDoCategories.DOING}</option>
-                <option value={ToDoCategories.DONE}>{ToDoCategories.DONE}</option>
+                <option value={ToDoCategories.DONE}>{ToDoCategories.DONE}</option> */}
             </select>
             <input
                 type="text"

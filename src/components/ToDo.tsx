@@ -1,12 +1,13 @@
 import { styled } from "styled-components";
 import { toDoAtom, type IToDoAtom } from "../atoms/atom-todo";
-import { useAtom } from "jotai";
-import { ToDoCategories } from "../atoms/atom-category";
+import { useAtom, useAtomValue } from "jotai";
+import { allCategoriesAtom } from "../atoms/atom-category";
 
 const ToDoLi = styled.li`
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     span {
         color: #0d0d0d;
     }
@@ -21,10 +22,14 @@ const ToDoButton = styled.button`
     all: unset;
     cursor: pointer;
     color: #0d0d0d;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 `;
 
 function ToDo({ id, content, category }: IToDoAtom) {
     const [toDos, setToDos] = useAtom(toDoAtom);
+    const allCategories = useAtomValue(allCategoriesAtom);
 
     const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         const {
@@ -51,7 +56,7 @@ function ToDo({ id, content, category }: IToDoAtom) {
         <ToDoLi id={id.toString()}>
             <span>{content}</span>
             <ToDoButtons>
-                {Object.values(ToDoCategories).map((cat) => {
+                {Object.values(allCategories).map((cat) => {
                     return (
                         category !== cat && (
                             <ToDoButton key={cat} name={cat} onClick={onClick}>

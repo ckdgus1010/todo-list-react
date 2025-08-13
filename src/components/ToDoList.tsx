@@ -3,11 +3,13 @@ import styled from "styled-components";
 import { toDoSelector } from "../atoms/atom-todo";
 import ToDoForm from "./ToDoForm";
 import ToDo from "./ToDo";
+import CustomCategoryForm from "./CustomCategoryForm";
 
 const Container = styled.div`
     margin: auto 10px;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 `;
@@ -60,6 +62,7 @@ function ToDoList() {
                     ))}
                 </List>
             </ToDoListBox>
+            <CustomCategoryForm />
         </Container>
     );
 }
